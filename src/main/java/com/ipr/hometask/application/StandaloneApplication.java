@@ -19,9 +19,7 @@ import java.util.Set;
 
 public class StandaloneApplication {
 
-    private static final Logger log = Logger.getLogger(StandaloneApplication.class);
-
-    //    public static final String FILE_URL = "event_driven_architecture.txt";
+    public static final int TOP_SIZE = 10;
 
     public static ArgsModel createArgsModel(String[] args) {
         ArgsModel argsModel = new ArgsModel();
@@ -32,19 +30,17 @@ public class StandaloneApplication {
     public static void main(String[] args) {
         try {
             ArgsModel argsModel = createArgsModel(args);
-            System.out.println(argsModel);
 
             String fileUrl = argsModel.getFileList().get(0);
 
-            int k = 10;
-
             List<String> stringList = FileUtils.fileToStringList(fileUrl);
             Map<String, Integer> dictionary = TextParser.parseStrings(stringList);
-            Map<Integer, Set<String>> top = MapFilter.getTop(dictionary, k);
+            Map<Integer, Set<String>> top = MapFilter.getTop(dictionary, TOP_SIZE);
 
-            ListPrinter.printFrequentWords(top, k);
+            ListPrinter.printFrequentWords(top, TOP_SIZE);
 
         } catch (ParameterException e) {
+            Logger log = Logger.getLogger(StandaloneApplication.class);
             log.error(e.getMessage());
         }
     }
