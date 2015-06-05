@@ -1,0 +1,17 @@
+
+div.container {
+    margin: 20px auto 50px;
+}
+
+h3 {
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+#upload-button {
+    margin-top: 10px;
+}
+
+#article-text {
+    text-align: justify;
+}

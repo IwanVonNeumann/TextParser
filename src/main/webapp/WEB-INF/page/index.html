@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Text parser</title>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.7.0/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.7.0/bootstrap-table.min.js"></script>
+    <script src="js/formatting.js"></script>
+    <script src="js/load-data.js"></script>
+    <script src="js/file-input-onchange.js"></script>
+    <script src="js/upload-button-onclick.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <section>
+        <h3>Upload file</h3>
+
+        <form method="POST" enctype="multipart/form-data" action="javascript:;" id="upload-form">
+            <input type="file" name="file" id="file-upload">
+        </form>
+        <button id="upload-button" type="button" class="btn btn-primary">Upload</button>
+    </section>
+
+    <section id="text">
+        <h3 id="article-header">Uploaded text</h3>
+
+        <div id="article-text"></div>
+    </section>
+
+    <section id="words-top">
+        <h3 class="pull-left">Top 10 repeated words</h3>
+        <table id="table"
+               data-toggle="table"
+               data-search="true"
+               data-sort-name="count"
+               data-sort-order="desc"
+               class="table table-striped">
+            <thead>
+            <tr>
+                <th data-field="words"
+                    data-sortable="true"
+                    data-formatter="wordsFormatter">
+                    Word
+                </th>
+                <th data-field="count"
+                    data-sortable="true">
+                    Frequency
+                </th>
+            </tr>
+            </thead>
+        </table>
+    </section>
+</div>
+
+</body>
+</html>
